@@ -24,8 +24,8 @@ namespace Gallery.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("LocalMsConnection");
-            services.AddDbContext<LocalMsContext>(options => options.UseSqlServer(connection));
+            string connection = Configuration.GetConnectionString("NpgTestSqlConnection");
+            services.AddDbContext<PostgresContext>(options => options.UseNpgsql(connection));
 
             services.AddTransient<IPhotoRepository, PhotoRepository>();
             services.AddTransient<IPhotoService, PhotoService>();

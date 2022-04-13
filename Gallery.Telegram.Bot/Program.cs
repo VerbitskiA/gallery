@@ -33,8 +33,8 @@ namespace Gallery.Telegram.Bot
                             Configuration = configurationRoot;
                         }).ConfigureServices((services) =>
                         {
-                            string connection = Configuration.GetConnectionString("LocalMsConnection");
-                            services.AddDbContext<LocalMsContext>(options => options.UseSqlServer(connection));
+                            string connection = Configuration.GetConnectionString("NpgTestSqlConnection");
+                            services.AddDbContext<PostgresContext>(options => options.UseNpgsql(connection));
 
                             services.AddHostedService<ConsoleService>();
                             services.AddTransient<IPhotoRepository, PhotoRepository>();

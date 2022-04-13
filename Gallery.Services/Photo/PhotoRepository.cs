@@ -15,9 +15,9 @@ namespace Gallery.Services.Photo
     /// </summary>
     public class PhotoRepository : IPhotoRepository
     {
-        private readonly LocalMsContext _localMsContext;
+        private readonly PostgresContext _localMsContext;
 
-        public PhotoRepository(LocalMsContext localMsContext)
+        public PhotoRepository(PostgresContext localMsContext)
         {
             _localMsContext = localMsContext;
         }
