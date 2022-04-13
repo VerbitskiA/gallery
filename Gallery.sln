@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gallery.WebUI", "Gallery.WebUI\Gallery.WebUI.csproj", "{EE5310E3-59D6-4C10-850F-3683C6A112C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gallery.Abstractions", "Gallery.Abstractions\Gallery.Abstractions.csproj", "{177300B1-27AA-4E92-ADD3-A61FAE715895}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gallery.Models", "Gallery.Models\Gallery.Models.csproj", "{22061F96-70F7-42AA-A858-C4CF16F98880}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gallery.Core", "Gallery.Core\Gallery.Core.csproj", "{1448FD8B-B209-4668-B0DD-822408F97863}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gallery.Services", "Gallery.Services\Gallery.Services.csproj", "{C8CDB745-41C9-4869-88A1-CD3630713786}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Telegram.Bot", "Gallery.Telegram.Bot\Gallery.Telegram.Bot.csproj", "{B750A7E3-09D6-4096-B241-FB6FE784DA27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE5310E3-59D6-4C10-850F-3683C6A112C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE5310E3-59D6-4C10-850F-3683C6A112C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE5310E3-59D6-4C10-850F-3683C6A112C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE5310E3-59D6-4C10-850F-3683C6A112C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{177300B1-27AA-4E92-ADD3-A61FAE715895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{177300B1-27AA-4E92-ADD3-A61FAE715895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{177300B1-27AA-4E92-ADD3-A61FAE715895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{177300B1-27AA-4E92-ADD3-A61FAE715895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22061F96-70F7-42AA-A858-C4CF16F98880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22061F96-70F7-42AA-A858-C4CF16F98880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22061F96-70F7-42AA-A858-C4CF16F98880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22061F96-70F7-42AA-A858-C4CF16F98880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1448FD8B-B209-4668-B0DD-822408F97863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1448FD8B-B209-4668-B0DD-822408F97863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1448FD8B-B209-4668-B0DD-822408F97863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1448FD8B-B209-4668-B0DD-822408F97863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8CDB745-41C9-4869-88A1-CD3630713786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8CDB745-41C9-4869-88A1-CD3630713786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8CDB745-41C9-4869-88A1-CD3630713786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8CDB745-41C9-4869-88A1-CD3630713786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B750A7E3-09D6-4096-B241-FB6FE784DA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B750A7E3-09D6-4096-B241-FB6FE784DA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B750A7E3-09D6-4096-B241-FB6FE784DA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B750A7E3-09D6-4096-B241-FB6FE784DA27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {813BCE9A-FA5C-4C97-8169-454659FEDB9E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gallery.Core\Gallery.Core.csproj" />
+    <ProjectReference Include="..\Gallery.Models\Gallery.Models.csproj" />
+    <ProjectReference Include="..\Gallery.Services\Gallery.Services.csproj" />
+  </ItemGroup>
+
+</Project>

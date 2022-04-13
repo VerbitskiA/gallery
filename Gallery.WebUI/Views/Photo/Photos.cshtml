@@ -1,0 +1,62 @@
+﻿@model Gallery.Models.Photos.Output.PaginationPhotoOutput
+@{
+    ViewData["Title"] = "Просмотр фотографий";
+
+}
+
+<form class="form-inline justify-content-center" asp-controller="Photo" asp-action="Photos">
+  <div class="form-group">
+    <label class="sr-only" for="inputEmail">Тег</label>
+    <input type="text" class="form-control" id="inputTag" name="tag" placeholder="Введите тег..." value="@Model.Tag">
+  </div>
+  <button type="submit" class="btn btn-primary ml-2">Найти</button>
+</form>
+
+<div class="text-center">
+    <h5>Всего фото: @Model.PhotosCount</h5>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var photo in Model.Photos)
+    {
+        <div class="col-sm-3">
+            <div class="card h-100">
+                <img src="@photo.ImagePath" class="card-img-top" alt="..." width=200 height=200>
+                <div class="card-body">
+                    <h5 class="card-title">@photo.Tag</h5>
+                    <p class="card-text"><small class="text-muted">@photo.Date</small></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<ul id="paginator" class="pagination justify-content-center mt-2">
+    <li class="page-item">
+      <a class="page-link" href="@Url.Action("Photos", new { tag=Model.Tag, page = 1 })">First</a>
+    </li>
+    <li class="@(Model.CurrentPage == 1 ? "page-item disabled" : "page-item")">
+      <a class="page-link" href="@Url.Action("Photos", new { tag=Model.Tag, page = Model.CurrentPage-1 })">Previous</a>
+    </li>
+    @{        
+        int countSidePages = Model.MaxVisiblePage / 2;
+        for (int i = Model.CurrentPage > countSidePages ? i = Model.CurrentPage - countSidePages : 1; 
+            i <= (Model.PagesCount > Model.MaxVisiblePage ? (Model.CurrentPage + countSidePages > Model.PagesCount ? Model.PagesCount : Model.CurrentPage + countSidePages) : Model.PagesCount);
+            i++)
+        {
+            <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
+                <a class="page-link" href="@Url.Action("Photos", new { tag=Model.Tag, page = i })">@i</a>
+            </li>
+        }
+    }
+    <li class="@(Model.CurrentPage == Model.PagesCount ? "page-item disabled" : "page-item")">
+      <a class="page-link" href="@Url.Action("Photos", new { tag=Model.Tag, page = Model.CurrentPage+1 })">Next</a>
+    </li>
+     <li class="page-item">
+      <a class="page-link" href="@Url.Action("Photos", new { tag=Model.Tag, page = Model.PagesCount })">Last</a>
+    </li>
+</ul> 
+
+
+

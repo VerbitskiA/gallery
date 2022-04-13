@@ -1,0 +1,30 @@
+﻿@model List<Gallery.Models.Photos.Output.PhotoOutput>
+@{
+    ViewData["Title"] = "Просмотр фотографий";
+
+}
+
+
+<div class="text-center">
+
+    <h1 class="display-4">Все фотографии:</h1>
+
+    @foreach (var photo in Model)
+    {
+        <div>
+            <p>Тег: @photo.Tag</p>
+            <img src="@photo.ImagePath" width=400 height=400 />
+            <p>Дата загрузки: @photo.Date</p>
+        </div>
+    }
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+</div>
