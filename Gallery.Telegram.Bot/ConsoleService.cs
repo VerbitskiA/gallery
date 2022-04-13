@@ -50,7 +50,7 @@ namespace Gallery.Telegram.Bot
                             receiverOptions,
                             cancellationToken
                         );
-                        Console.ReadLine();
+                        new AutoResetEvent(false).WaitOne();
                     }
                     catch (Exception ex)
                     {
@@ -100,8 +100,8 @@ namespace Gallery.Telegram.Bot
                     return;
                 }
             }
- }
-        
+        }
+
         public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             Console.WriteLine(JsonConvert.SerializeObject(exception));
