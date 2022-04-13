@@ -18,7 +18,7 @@ namespace Gallery.Telegram.Bot
         private readonly IPhotoService _photoService;
         private readonly IFtpService _ftpService;
 
-        static ITelegramBotClient bot = new TelegramBotClient("5292912936:AAGKysvtHG68am-XYA1jk9OQZIdAc7zlTJs");
+        static ITelegramBotClient bot = new TelegramBotClient("token");
 
         public ConsoleService(IHostApplicationLifetime appLifetime, IPhotoService photoService, IFtpService ftpService)
         {
