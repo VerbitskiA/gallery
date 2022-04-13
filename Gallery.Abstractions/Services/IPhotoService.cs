@@ -30,5 +30,12 @@ namespace Gallery.Abstractions.Services
         /// <param name="imagePath">Путь к изображению.</param>
         /// <returns>Добавленное фото.</returns>
         Task<PhotoOutput> AddPhotoAsync(string tag, string imagePath);
+
+        /// <summary>
+        /// Метод удалит фото из БД и файл с фото.
+        /// </summary>
+        /// <param name="photoId">Идентфикатор фото.</param>
+        /// <returns>Статус удаления.</returns>
+        Task<bool> DeletePhotoAsync(long photoId);
     }
 }

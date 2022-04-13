@@ -1,6 +1,7 @@
 using Gallery.Abstractions.Repositories;
 using Gallery.Abstractions.Services;
 using Gallery.Core.Data;
+using Gallery.Services.Ftp;
 using Gallery.Services.Photo;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,7 @@ namespace Gallery.WebUI
 
             services.AddTransient<IPhotoRepository, PhotoRepository>();
             services.AddTransient<IPhotoService, PhotoService>();
+            services.AddTransient<IFtpService, FtpLocalService>();
             services.AddControllersWithViews();
         }
 

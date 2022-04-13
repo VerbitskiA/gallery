@@ -71,23 +71,23 @@ namespace Gallery.Telegram.Bot
         {
             Console.WriteLine(JsonConvert.SerializeObject(update));
 
-            if (update.Type == UpdateType.Message)
+            if (update.Type == UpdateType.ChannelPost)
             {
-                var message = update.Message;
+                var message = update.ChannelPost;
 
                 if (message.Photo is not null)
                 {
                     var path = await _ftpService.DownloadFileFromTelegramAsync(bot, message.Photo[^1].FileId);
-                    
+
                     if (String.IsNullOrEmpty(path))
                     {
                         await botClient.SendTextMessageAsync(message.Chat, "Что-то пошло не так :( Пожалуйста повторите попытку и следуйте всем указаниям.");
-                       
+
                         return;
                     }
 
                     var res = await _photoService.AddPhotoAsync(message.Caption, path);
-                    
+
                     if (res is null)
                     {
                         await botClient.SendTextMessageAsync(message.Chat, "Что-то пошло не так :( Пожалуйста повторите попытку и следуйте всем указаниям.");
@@ -99,30 +99,11 @@ namespace Gallery.Telegram.Bot
 
                     return;
                 }
-                if (message.Text.ToLower() == "/start")
-                {
-                    await botClient.SendTextMessageAsync(message.Chat, "Добро пожаловать! С помощью этого бота вы можете загрузить фото в наш сервис.");
-                   
-                    return;
-                }
-                else if (message.Text.ToLower() == "/help")
-                {
-                    await botClient.SendTextMessageAsync(message.Chat, "Загрузите фото, добавьте к нему подпись, и мы его сохраним! :)");
-                    
-                    return;
-                }
-                else
-                {
-                    await bot.SendTextMessageAsync(message.Chat, "Мы не знаем, что надо делать! :( Просто загрузите фото, добавьте подпись, и мы его сохраним!");
-
-                    return;
-                }
             }
-        }
+ }
         
         public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
-            // Некоторые действия
             Console.WriteLine(JsonConvert.SerializeObject(exception));
         }
 

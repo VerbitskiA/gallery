@@ -9,7 +9,7 @@ namespace Gallery.Core.Data
 
         public LocalMsContext(DbContextOptions<LocalMsContext> options) : base(options)
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

@@ -13,10 +13,12 @@ namespace Gallery.Services.Photo
     public class PhotoService : IPhotoService
     {
         private readonly IPhotoRepository _photoRepository;
+        private readonly IFtpService _ftpService;
 
-        public PhotoService(IPhotoRepository photoRepository)
+        public PhotoService(IPhotoRepository photoRepository, IFtpService ftpService)
         {
             _photoRepository = photoRepository;
+            _ftpService = ftpService;
         }
 
         /// <summary>
@@ -32,6 +34,39 @@ namespace Gallery.Services.Photo
                 var result = await _photoRepository.AddPhotoAsync(tag, imagePath);
 
                 return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Метод удалит фото из БД и файл с фото.
+        /// </summary>
+        /// <param name="photoId">Идентфикатор фото.</param>
+        /// <returns>Статус удаления.</returns>
+        public async Task<bool> DeletePhotoAsync(long photoId)
+        {
+            try
+            {
+                bool statusFile = false;
+
+                bool statusPhoto = false;
+                
+                var deletedPhoto = await _photoRepository.GetPhotoByIdAsync(photoId);
+
+                if (deletedPhoto is null)
+                {
+                    return statusFile && statusPhoto;
+                }
+
+                statusFile = await _ftpService.DeleteFileAsync(deletedPhoto.ImagePath);                            
+
+                statusPhoto = await _photoRepository.DeletePhotoAsync(deletedPhoto.PhotoId);                
+
+                return statusFile && statusPhoto;
             }
             catch (Exception e)
             {

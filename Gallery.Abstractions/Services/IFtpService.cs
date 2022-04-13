@@ -15,5 +15,12 @@ namespace Gallery.Abstractions.Services
         /// <param name="fileId">Идентификатор файла.</param>
         /// <returns>Короткий путь к загруженному файлу.</returns>
         Task<string> DownloadFileFromTelegramAsync(ITelegramBotClient _bot, string fileId);
+
+        /// <summary>
+        /// Метод удалит файл.
+        /// </summary>
+        /// <param name="path">Путь к файлу.</param>
+        /// <returns>Статус удаления.</returns>
+        Task<bool> DeleteFileAsync(string path);
     }
 }

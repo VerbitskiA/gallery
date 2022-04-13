@@ -42,5 +42,12 @@ namespace Gallery.WebUI.Controllers
 
             return View("Photos", result);
         }
+
+        public async Task<ActionResult<bool>> DeletePhoto(long photoId, string tag, int page)
+        {
+            var deleteStatus = await _photoService.DeletePhotoAsync(photoId);
+
+            return RedirectToAction("Photos",new { tag, page});            
+        }
     }
 }

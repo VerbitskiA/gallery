@@ -9,6 +9,14 @@ namespace Gallery.Abstractions.Repositories
     /// </summary>
     public interface IPhotoRepository
     {
+
+        /// <summary>
+        /// Метод найдёт фото по id.
+        /// </summary>
+        /// <param name="photoId">Идентификатор фото.</param>
+        /// <returns>Фото.</returns>
+        Task<PhotoOutput> GetPhotoByIdAsync(long photoId);
+
         /// <summary>
         /// Метод вернет все фото.
         /// </summary>
@@ -31,5 +39,12 @@ namespace Gallery.Abstractions.Repositories
         /// <param name="imagePath">Путь к изображению.</param>
         /// <returns>Добавленное фото.</returns>
         Task<PhotoOutput> AddPhotoAsync(string tag, string imagePath);
+
+        /// <summary>
+        /// Метод удалит фото.
+        /// </summary>
+        /// <param name="photoId">Идентфикатор фото.</param>
+        /// <returns>Статус удаления.</returns>
+        Task<bool> DeletePhotoAsync(long photoId);
     }
 }

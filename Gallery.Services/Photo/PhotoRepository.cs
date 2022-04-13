@@ -65,6 +65,34 @@ namespace Gallery.Services.Photo
         }
 
         /// <summary>
+        /// Метод удалит фото.
+        /// </summary>
+        /// <param name="photoId">Идентфикатор фото.</param>
+        /// <returns>Статус удаления.</returns>
+        public async Task<bool> DeletePhotoAsync(long photoId)
+        {
+            try
+            {
+                var findedPhoto = await _localMsContext.Photos.FirstOrDefaultAsync(p => p.PhotoId.Equals(photoId));
+
+                if (findedPhoto is null)
+                {
+                    return false;
+                }
+
+                _localMsContext.Remove(findedPhoto);
+                await _localMsContext.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Метод вернет все фото.
         /// </summary>
         /// <returns>Список фото.</returns>
@@ -135,6 +163,34 @@ namespace Gallery.Services.Photo
             };
 
             return paginationPhotoOutput;
+        }
+
+        /// <summary>
+        /// Метод найдёт фото по id.
+        /// </summary>
+        /// <param name="photoId">Идентификатор фото.</param>
+        /// <returns>Фото.</returns>
+        public async Task<PhotoOutput> GetPhotoByIdAsync(long photoId)
+        {
+            try
+            {
+                var findedPhoto = await _localMsContext.Photos
+                    .Select(p=> new PhotoOutput
+                    {
+                        PhotoId=p.PhotoId,
+                        Tag = p.Tag,
+                        ImagePath = p.ImagePath,
+                        Date = p.Date.ToShortDateString()
+                    })
+                    .FirstOrDefaultAsync(p => p.PhotoId.Equals(photoId));
+
+                return findedPhoto;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
         }
     }
 }
