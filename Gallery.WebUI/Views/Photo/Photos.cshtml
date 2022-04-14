@@ -42,7 +42,7 @@
     @{        
         int countSidePages = Model.MaxVisiblePage / 2;
         for (int i = Model.CurrentPage > countSidePages ? i = Model.CurrentPage - countSidePages : 1; 
-            i <= (Model.PagesCount > Model.MaxVisiblePage ? (Model.CurrentPage + countSidePages > Model.PagesCount ? Model.PagesCount : Model.CurrentPage + countSidePages) : Model.PagesCount);
+            i <= (Model.PagesCount > countSidePages ? (Model.CurrentPage + countSidePages > Model.PagesCount ? Model.PagesCount : Model.CurrentPage + countSidePages) : Model.PagesCount);
             i++)
         {
             <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
